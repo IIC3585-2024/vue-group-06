@@ -1,39 +1,30 @@
-# vue-project
+# TaskTimer - Vue
 
-This template should help get you started developing with Vue 3 in Vite.
+Our Task Timer app, developed with Vue3, is an app where you can store and see your tasks, included with google task Api, you can manage and see that tasks also. You can create and complete this activities with a timer display to see your progress and a summary of completed tasks. 
 
-## Recommended IDE Setup
+## Web
+Available in: [https://wasm.cparedesr.com/vue](https://wasm.cparedesr.com/vue)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Features
 
-## Type Support for `.vue` Imports in TS
+- Task Management: Add new tasks, view a list of tasks, view tasks details, deleting existing tasks and start and finish tasks.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+- API: Connection with google tasks API, with login to a google account (@uc.cl only), and get the google tasks saved in that account. **Important: You must log in with your jacastro18@uc.cl account because the Google Cloud project that enables the connection to the Google Tasks API is in Testing Stage. As a result, only tester users are authorized to make requests.**
 
-## Customize configuration
+- Task Summary: View of a summary of tasks done, with time spended display and total time spended for all the tasks.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+- Timer: Visual feedback of tasks in progress with timer that show how much time is left to the tasks end.
 
-## Project Setup
+## Stack
 
-```sh
-npm install
-```
+- Vue3
+- Typescript
+- Tailwind
+- Supabase (API Connection + OAuth)
+- Google Tasks API
 
-### Compile and Hot-Reload for Development
+## Team
 
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+- Valentina Campaña
+- Cristóbal Carrasco
+- Carlos Paredes
