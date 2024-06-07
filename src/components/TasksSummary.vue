@@ -1,10 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import TaskList from '@/components/TaskList.vue';
 import Timer from '@/components/Timer.vue';
-import { useTasksStore } from '@/stores/tasks';
-
-const tasksStore = useTasksStore();
 
 </script>
 
@@ -13,7 +9,7 @@ const tasksStore = useTasksStore();
     <div class="flex flex-col items-center p-6 gap-5 w-full items-center">
       <h1 class="text-2xl font-bold">Completed Tasks Summary</h1>
       <Timer
-        :remainingTime=tasksStore.completedTasksTime
+        :isSummary="true"
       />
     </div>
   </div>

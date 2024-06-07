@@ -49,7 +49,7 @@ const currentTask = computed(
       >
         <h1 class="text-2xl font-bold">Current Task Timer</h1>
         <Timer
-          :remainingTime="currentTask ? currentTask.remainingTime : 0"
+          :isSummary="false"
         />
         <TaskCard 
           v-if="currentTask" 

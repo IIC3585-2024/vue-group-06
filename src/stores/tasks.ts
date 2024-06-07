@@ -8,6 +8,7 @@ export const useTasksStore = defineStore('tasks', () => {
   const completedTasks = computed(() => tasks.value.filter(task => task.completed))
   const currentTask = computed(() => tasks.value.find(task => task.currentTask) || null)
   const availableTasks = computed(() => tasks.value.filter(task => !task.completed && !task.currentTask))
+  let timer: NodeJS.Timeout | null = null;
   
   function addTask(task: Task) {
     const lastTask = tasks.value[tasks.value.length - 1];
@@ -20,6 +21,7 @@ export const useTasksStore = defineStore('tasks', () => {
       task.currentTask = task.id === id;
       if (task.currentTask) {
         task.startedAt = new Date();
+        startCountdown(task.remainingTime || task.duration);
       }
     });
   }
@@ -46,6 +48,23 @@ export const useTasksStore = defineStore('tasks', () => {
     if (currentTask.value) {
       currentTask.value.currentTask = false;
     }
+    clearInterval(timer!);
+  }
+
+  function startCountdown(duration: number) {
+    timeLeft.value = duration;
+    if (timer) {
+      clearInterval(timer);
+    }
+    timer = setInterval(() => {
+      if (timeLeft.value > 0) {
+        timeLeft.value--;
+        updateTaskRemainingTime(timeLeft.value);
+      } else {
+        clearInterval(timer!);
+        stopCurrentTask();
+      }
+    }, 1000);
   }
 
 

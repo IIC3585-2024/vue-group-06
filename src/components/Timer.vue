@@ -1,40 +1,15 @@
 <script setup lang="ts">
-import { ref, watch, onBeforeUnmount, computed } from 'vue';
+import { defineProps, computed } from 'vue';
 import { useTasksStore } from '@/stores/tasks';
 
 const tasksStore = useTasksStore();
-const props = defineProps({
-  remainingTime: Number,
-})
+const props = defineProps<{
+  isSummary: boolean;
+}>();
 
-const timeLeft = ref(props.remainingTime);
-let timer = null;
-
-const startCountdown = (duration) => {
-  timeLeft.value = duration;
-  if (timer) {
-    clearInterval(timer);
-  }
-  timer = setInterval(() => {
-    if (timeLeft.value > 0) {
-      timeLeft.value--;
-      tasksStore.updateTaskRemainingTime(timeLeft.value);
-    } else {
-      clearInterval(timer);
-      tasksStore.stopCurrentTask();
-    }
-  }, 1000);
-};
-
-watch(() => props.remainingTime, (newVal) => {
-  startCountdown(newVal);
-});
-
-onBeforeUnmount(() => {
-  if (timer) {
-    clearInterval(timer);
-  }
-});
+const timeLeft = computed(
+  () => props.isSummary ? tasksStore.completedTasksTime : tasksStore.timeLeft
+);
 
 const days = computed(() => Math.floor(timeLeft.value / (3600 * 24)));
 const hours = computed(() => Math.floor((timeLeft.value % (3600 * 24)) / 3600));
