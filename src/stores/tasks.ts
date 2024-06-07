@@ -8,7 +8,6 @@ export const useTasksStore = defineStore('tasks', () => {
   const completedTasks = computed(() => tasks.value.filter(task => task.completed))
   const currentTask = computed(() => tasks.value.find(task => task.currentTask) || null)
   const availableTasks = computed(() => tasks.value.filter(task => !task.completed && !task.currentTask))
-
   
   function addTask(task: Task) {
     const lastTask = tasks.value[tasks.value.length - 1];

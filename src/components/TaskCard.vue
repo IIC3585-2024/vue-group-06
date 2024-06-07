@@ -25,7 +25,7 @@ const isTaskRunning = computed(() => tasksStore.currentTask !== null);
   <div class="card card-compact w-96 bg-base-100 shadow-xl border min-h-48">
     <div class="card-body">
       <h2 class="card-title">{{ props.title }}</h2>
-      <p>Estimated Time: {{ props.duration }} {{ props.durationUnit }}</p>
+      <p>Time: {{ props.duration }} {{ props.durationUnit }}</p>
       <p>{{ props.description }}</p>
       <div class="flex flex-row items-end justify-between">
         <div class="badge badge-neutral text-white">

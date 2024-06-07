@@ -59,7 +59,7 @@
       </div>
       <div class="form-control flex flex-row items-end space-between gap-4">
         <div>
-          <label for="taskDuration">Estimated Task Duration</label>
+          <label for="taskDuration">Task Duration</label>
           <input class="input input-bordered w-full" id="taskDuration" v-model="taskDuration" type="number" />
         </div>
         <select  class="select select-bordered w-full" id="durationUnit" v-model="durationUnit">
